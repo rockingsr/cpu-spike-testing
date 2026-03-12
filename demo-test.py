@@ -14,9 +14,8 @@ def orders_stable():
 
 @app.get("/orders-buggy")
 def orders_buggy():
-    total = 0
-    for i in range(3 * 10**7):   # Safe for t3.micro
-        total += i
+    # FIX: Replaced CPU-intensive loop with constant value to avoid heavy CPU usage in production.
+    total = 10
     return {"orders": total}
 
 @app.get("/orders-recovered")
